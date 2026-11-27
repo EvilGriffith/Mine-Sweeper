@@ -41,7 +41,7 @@ export default function Roomlist() {
   return (
     <div className='back'>
       <div className='window'>
-        <div className='name'>Mine Sweper</div>
+        <div className='name'>Mine Sweeper</div>
         <Link to="/room" state={[16,cof]} className='roombut'>16x 16</Link>
         <Link to="/room" state={[32,cof]} className='roombut'>32x 32</Link>
         <Link to="/room" state={[40,cof]} className='roombut'>40x 40</Link>
