@@ -35,6 +35,9 @@ export default function Room() {
         setexplore(false)
         setexid(0)
         setgameover(1)
+        const audio = audioRef.current
+        audio.currentTime = 0
+        audio.stop()
     }
 
     const cellCLick = (isclose,bombis,flag,index) => {
