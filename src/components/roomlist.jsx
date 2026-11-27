@@ -45,7 +45,7 @@ export default function Roomlist() {
         <Link to="/room" state={[16,cof]} className='roombut'>16x 16</Link>
         <Link to="/room" state={[32,cof]} className='roombut'>32x 32</Link>
         <Link to="/room" state={[40,cof]} className='roombut'>40x 40</Link>
-        <Link to="/room" state={playerwidth >= 10 ? [playerwidth,cof] : [16,cof]} className='roombut'>Custom Room</Link>
+        <Link to="/room" state={playerwidth >= 10 ? [playerwidth,cof] : [10,cof]} className='roombut'>Custom Room</Link>
         <div className='set' onClick={() => {setsebut(true)}}/>
         <div className={sebut ? "setwindow" : "setwindowclose"}>
           <div className='setname'>Settings Custom Room <div className='exit' onClick={() => {setsebut(false)}}/></div>
