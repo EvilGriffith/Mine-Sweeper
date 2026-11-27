@@ -7,14 +7,14 @@ import opencell from "../assets/opencell.png"
 import closecell from "../assets/closecell.png"
 import f from "../assets/flag.png"
 import bombanimation from "../assets/bomb.webp"
-import explore from "../assets/explore.mp3"
+import explor from "../assets/explore.mp3"
 
 export default function Room() {
     const [width,cof] = useLocation().state
     const init = new Board()
     const [b, bbs] = init.createBoard(width,cof)
     const screenwidth = window.innerWidth
-    console.log(screenwidth)
+
 
 
     const [board,setboard] = useState(b)
@@ -139,7 +139,7 @@ export default function Room() {
         <div className="back">
             <div className="boardwin">
                 <div className="board" style={{"--board-size": width}}>
-                    <audio ref={audioRef} src={explore} preload="auto"/>
+                    <audio ref={audioRef} src={explor} preload="auto"/>
                     {
                         board.map(({isclose,bombis,around,flag},i) => {
                             return(
