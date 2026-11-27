@@ -87,6 +87,18 @@
     background-color: white;
     color: black;
 }
+.boardwid{
+    color: white;
+    margin-top: 2%;
+    font-size: 25px;
+}
+.time{
+    color: white;
+    margin-top: 2%;
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+}
 @media(max-width: 414px){
     .boardwin{
         width: 98%;

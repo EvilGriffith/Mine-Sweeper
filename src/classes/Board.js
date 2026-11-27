@@ -50,8 +50,13 @@ export class Board {
             }
         }
 
+        // расчитыаем сколько время дается игроку
+        
+        const time = Math.floor(width * width * cof * (bombtoret / (width * width) + 1)) * 3.5
+
+
         // выводим результат
 
-        return [board,bombtoret]
+        return [board,bombtoret,time]
     }
 }

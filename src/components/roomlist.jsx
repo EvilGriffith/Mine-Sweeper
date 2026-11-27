@@ -49,8 +49,8 @@ export default function Roomlist() {
         <div className='set' onClick={() => {setsebut(true)}}/>
         <div className={sebut ? "setwindow" : "setwindowclose"}>
           <div className='setname'>Settings Custom Room <div className='exit' onClick={() => {setsebut(false)}}/></div>
-          <div className='oneset'>Width: {sebut ? <input className='input' value={playerwidth} type='number' onChange={(e) => {setplayerwidth(e.target.value)}} min={10} max={40}/> : <></>}</div>
-          <div className='oneset'>height: {playerwidth}</div>
+          <div className='oneset'>Rows: {sebut ? <input className='input' value={playerwidth} type='number' onChange={(e) => {setplayerwidth(e.target.value)}} min={10} max={40}/> : <></>}</div>
+          <div className='oneset'>Columns: {playerwidth}</div>
         </div>
         <div className='butwindow'>
           <div className={but1} onClick={() => {hadleClick(1)}}>Easy</div>

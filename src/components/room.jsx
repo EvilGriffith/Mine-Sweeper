@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom"
 import "../css/main.css"
 import "../css/room.css"
 import { Board } from "../classes/Board"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import opencell from "../assets/opencell.png"
 import closecell from "../assets/closecell.png"
 import f from "../assets/flag.png"
@@ -12,12 +12,15 @@ import explor from "../assets/explore.mp3"
 export default function Room() {
     const [width,cof] = useLocation().state
     const init = new Board()
-    const [b, bbs] = init.createBoard(width,cof)
+    const [b, bbs,t] = init.createBoard(width,cof)
     const screenwidth = window.innerWidth
 
 
 
     const [board,setboard] = useState(b)
+    const [time,setTime] = useState(t)
+    const [minutes,setminutes] = useState(0)
+    const [seconds,setseconds] = useState(0)
     const [bombs,setbombs] = useState(bbs)
     const [explore,setexplore] = useState(false)
     const [exid,setexid] = useState(0)
@@ -27,9 +30,29 @@ export default function Room() {
     const longPress = useRef(false)
 
 
+    useEffect(() => {
+        setminutes(Math.floor(time / 60))
+        setseconds(time % 60)
+    },[time])
+
+    useEffect(() => {
+    if (gameover !== 1) return;
+    const timer = setInterval(() => {
+        setTime(prev => Math.max(prev - 1, 0));
+    }, 1000);
+    return () => clearInterval(timer);
+    }, [gameover]);
+
+    useEffect(() => {
+    if (time === 0 && gameover === 1) {
+    lose();
+    }
+}, [time, gameover]);
+
     const restart = () => {
         const init = new Board()
         const [b, bbs] = init.createBoard(width,cof)
+        setTime(t)
         setboard(b)
         setbombs(bbs)
         setexplore(false)
@@ -39,19 +62,21 @@ export default function Room() {
         audio.pause()
         audio.currentTime = 0
     }
+    const lose = () => {
+        const audio = audioRef.current
+        audio.currentTime = 0
+        audio.play().catch(error => {
+            console.log(error)
+        })
+        setexid(exid+1)
+        setexplore(true)
+        setgameover(0)
+    }
 
     const cellCLick = (isclose,bombis,flag,index) => {
         if (!isclose || flag || gameover == 0 || gameover == 2) return;
         if(bombis){
-            const audio = audioRef.current
-            audio.currentTime = 0
-            audio.play().catch(error => {
-                console.log(error)
-            })
-            setexid(exid+1)
-            setexplore(true)
-            setgameover(0)
-            
+            lose()
         }
 
         const copyboard = board.map(cell => ({ ...cell }));
@@ -112,9 +137,7 @@ export default function Room() {
         if(newbombs === 0){
             for(let i = 0; i < newboard.length; i++){
                 if(newboard[i].bombis === true && newboard[i].flag === false){
-                    setgameover(0)
-                    setexid(exid + 1)
-                    setexplore(true)
+                    lose()
                     return
                 }
             }
@@ -204,6 +227,12 @@ export default function Room() {
                 </div>
                 <div className="infowin">
                     <div className="bombs">Bombs left: {bombs}</div>
+                    <div className="boardwid">{width + "x " + width}</div>
+                    <div className="time">Time: <div style={{
+                        color: 
+                        time > 10 ? "white" : "red",
+                        marginLeft: '4px'
+                    }}>{minutes}:{seconds < 10 ? "0" + seconds : seconds}</div></div>
                     <div className="gameover">{gameover == 0 ? "Game Over" : gameover == 1 ?"Game Continue" : gameover == 2 ? "Game Win" : "Game Win"}</div>
                     <div className="restart" onClick={restart}>Restart</div>
                 </div>
