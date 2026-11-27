@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Pixelify Sans";
+    user-select: none;
+}
+.back{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../assets/background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.back::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
+@media(max-width: 414px){
+    .back{
+        height: 94vh;
+    }
+}

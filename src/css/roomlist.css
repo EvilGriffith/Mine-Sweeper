@@ -1,0 +1,180 @@
+.window{
+    width: 33%;
+    height: 70%;
+    background-color: black;
+    color: white;
+    z-index: 2;
+    position: relative;
+    margin-top: 10%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.set{
+    background-image: url("../assets/set.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 30px;
+    grid-template-columns: repeat(70px,1fr);
+    grid-template-rows: repeat(70px,1fr);
+    aspect-ratio: 1/1;
+    margin-top: 2%;
+    gap: 0;
+}
+.set:hover{
+    cursor: pointer;
+}
+.setwindow{
+    position: fixed;
+    z-index: 9999;
+    width: 33%;
+    height: 70%;
+    background-color: white;
+    border-radius: 10px;
+    opacity: 0.6;
+}
+.setwindowclose{
+    width: 0;
+    height: 0;
+}
+.setname{
+    color:black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+}
+.oneset{
+    margin-top: 3%;
+    width: 70%;
+    height: 2%;
+    color: black;
+    margin-left: 4%;
+}
+.input{
+    height: 100%;
+    width: 20%;
+}
+.exit{
+    margin-left: 20%;
+    background-image: url("../assets/exit.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 15px;
+    width: 15px;
+}
+.exit:hover{
+    cursor: pointer;
+}
+@media(max-width: 414px){
+    .setwindow{
+        width: 83%;
+    }
+    .window{
+        width: 83%;
+        height: 70%;
+        background-color: black;
+        color: white;
+        z-index: 2;
+        position: relative;
+        margin-top: 10%;
+        border-radius: 10px;
+        
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}
+.name{
+    margin-top: 10%;
+    font-size: 50px;
+    user-select: none;
+}
+.roombut{
+    border: 3px solid white;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-top: 5%;
+    user-select: none;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 5%;
+    transition: 0.2s ease-in;
+    color: white;
+    text-decoration: none;
+}
+.roombut:hover{
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+.butwindow{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20%;
+    font-size: 15px;
+    width: 50%;
+}
+.but{
+    border: 2px solid white;
+    user-select: none;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 10px;
+    transition: 0.3s ease-in;
+    width: 90%;
+}
+.but1{
+    border: 2px solid white;
+    margin-left: 5%;
+    user-select: none;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 10px;
+    transition: 0.3s ease-in;
+}
+.but:hover{
+    cursor: pointer;
+    color: black;
+    background-color: white;
+}
+.but1:hover{
+    cursor: pointer;
+    color: black;
+    background-color: white;
+}
+.but1actived{
+    border: 2px solid white;
+    margin-left: 5%;
+    user-select: none;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 10px;
+    transition: 0.3s ease-in;
+    color: black;
+    background-color: white;
+}
+.butactived{
+    border: 2px solid black;
+    user-select: none;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 10px;
+    transition: 0.3s ease-in;
+    color: black;
+    background-color: white;
+}
